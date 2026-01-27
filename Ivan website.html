@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan - Digital Marketing & AI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #0f0f0f;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-80px) translateX(40px); }
+            50% { transform: translateY(-40px) translateX(-40px); }
+            75% { transform: translateY(-120px) translateX(80px); }
+        }
+
+        header {
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            box-shadow: 0 5px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            padding: 5px 0;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f0f0f 0%, #2d1b4e 50%, #1e1b4b 100%);
+            color: white;
+            padding: 200px 2rem 120px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #e5e5e5;
+            animation: fadeInUp 1s 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: #a0a0a0;
+            animation: fadeInUp 1s 0.4s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+            animation: fadeInUp 1s 0.6s both;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ec4899 0%, #fb923c 100%);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #a78bfa;
+        }
+
+        .btn-secondary::before {
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+        }
+
+        section {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.4s;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotateY(360deg);
+        }
+
+        .service-card h3 {
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card p {
+            color: #ccc;
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            color: #ccc;
+            animation: fadeInLeft 0.8s;
+        }
+
+        .about-text h3 {
+            color: #a78bfa;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #fb923c 100%);
+            height: 500px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInRight 0.8s;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #a78bfa;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a78bfa;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: #a78bfa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .social-link i {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: rgba(15, 15, 15, 0.98);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid rgba(139, 92, 246, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: #a0a0a0;
+            margin: 0.5rem 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            animation: slideIn 0.5s;
+        }
+
+        .message.success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .message.error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .skills-section {
+            margin-top: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: #a78bfa;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: #a78bfa;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="particles" id="particles"></div>
+
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="showSection('home')">✨ Ivan</div>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('services')">Services</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm Ivan</h1>
+                <p class="tagline">Digital Marketing Strategist & AI Solutions Expert</p>
+                <p class="subtitle">Transforming brands through innovative digital strategies, compelling content, and cutting-edge AI applications</p>
+                <div>
+                    <a class="btn" onclick="showSection('services')">🚀 Explore Services</a>
+                    <a class="btn btn-secondary" onclick="showSection('contact')">💬 Let's Connect</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="services" class="section-hidden">
+        <h2>💼 My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Digital Marketing</h3>
+                <p>Strategic digital marketing solutions to grow your online presence, engage your audience, and drive measurable results through SEO, social media, and content marketing.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>Professional Writing</h3>
+                <p>Crafting compelling content that resonates with your audience - from articles and copywriting to technical documentation and creative pieces.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h3>Blogging Services</h3>
+                <p>Engaging blog content creation and strategy that drives traffic, builds authority, and converts readers into loyal customers.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Leadership Training</h3>
+                <p>Individual and corporate leadership coaching programs designed to unlock potential, develop skills, and create transformative leaders.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Brand Development</h3>
+                <p>Building powerful brand identities that stand out, connect emotionally, and create lasting impressions in competitive markets.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>AI Application Development</h3>
+                <p>Custom AI solutions and intelligent applications that automate processes, enhance decision-making, and drive innovation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Vibe Coding</h3>
+                <p>Creative and efficient coding solutions with a focus on user experience, modern design, and innovative functionality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-hidden">
+        <h2>🌟 About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Who I Am</h3>
+                <p>I'm Ivan, a passionate digital marketing strategist and AI solutions expert dedicated to helping individuals and businesses thrive in the digital age. With expertise spanning digital marketing, content creation, leadership development, and cutting-edge AI applications, I bring a unique blend of creativity and technical prowess to every project.</p>
+                <p>My approach combines strategic thinking with hands-on execution. Whether I'm developing a comprehensive digital marketing campaign, coaching leaders to reach their full potential, or building innovative AI applications, I focus on delivering measurable results that exceed expectations.</p>
+                <p>From startups to established enterprises, I've helped numerous clients transform their digital presence, develop strong brands, and leverage technology to achieve their goals. Let's work together to turn your vision into reality.</p>
+                
+                <div class="skills-section">
+                    <h3>Core Expertise</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Digital Marketing</div>
+                        <div class="skill-tag">Content Strategy</div>
+                        <div class="skill-tag">SEO/SEM</div>
+                        <div class="skill-tag">AI Development</div>
+                        <div class="skill-tag">Leadership Coaching</div>
+                        <div class="skill-tag">Brand Strategy</div>
+                        <div class="skill-tag">Copywriting</div>
+                        <div class="skill-tag">Web Development</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                🚀
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-hidden">
+        <h2>💬 Let's Connect</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">👤 Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="subject">📝 Subject</label>
+                    <input type="text" id="subject" name="subject" required placeholder="What would you like to discuss?">
+                </div>
+                <div class="form-group">
+                    <label for="message">💭 Message</label>
+                    <textarea id="message" name="message" required placeholder="Tell me about your project or inquiry..."></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">✉️ Send Message</button>
+                <div id="formMessage" class="message"></div>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ivan-owusu" target="_blank" class="social-link">
+                <span>💼</span>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://x.com/Ivantheson95" target="_blank" class="social-link">
+                <span>𝕏</span>
+                <span>Twitter/X</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ivan. All rights reserved.</p>
+        <p>✨ Empowering brands through digital innovation and AI ✨</p>
+    </footer>
+
+    <script>
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api' 
+            : '/api';
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('cursorGlow');
+            glow.style.left = e.clientX - 12.5 + 'px';
+            glow.style.top = e.clientY - 12.5 + 'px';
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        function showSection(sectionName) {
+            const sections = ['home', 'services', 'about', 'contact'];
+            
+            sections.forEach(section => {
+                const el = document.getElementById(section);
+                if (section === sectionName) {
+                    el.classList.remove('section-hidden');
+                } else {
+                    el.classList.add('section-hidden');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMessage(message, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = message;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Sending...';
+
+            try {
+                const response = await fetch(`${API_URL}/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('✅ Thank you! I\'ll get back to you soon.', 'success');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    showMessage(`❌ ${data.message}`, 'error');
+                }
+            } catch (error) {
+                showMessage('❌ Failed to send message. Please try again later.', 'error');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '✉️ Send Message';
+            }
+        });
+
+        window.addEventListener('load', () => {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
