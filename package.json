@@ -1,0 +1,11 @@
+{
+  "name": "ivan-personal-website",
+  "version": "1.0.0",
+  "description": "Ivan's Personal Website",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
