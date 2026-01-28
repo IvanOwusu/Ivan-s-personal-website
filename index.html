@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,10 +38,23 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-80px) translateX(40px); }
-            50% { transform: translateY(-40px) translateX(-40px); }
-            75% { transform: translateY(-120px) translateX(80px); }
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            25% {
+                transform: translateY(-80px) translateX(40px);
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(-40px);
+            }
+
+            75% {
+                transform: translateY(-120px) translateX(80px);
+            }
         }
 
         header {
@@ -136,8 +150,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .hero-content {
@@ -280,8 +301,13 @@
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .service-card:hover {
@@ -369,8 +395,13 @@
         }
 
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
         }
 
         .contact-form {
@@ -477,6 +508,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -488,6 +520,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -499,6 +532,7 @@
                 opacity: 0;
                 transform: translateX(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -529,6 +563,7 @@
                 transform: translateY(-20px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -602,6 +637,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="particles" id="particles"></div>
@@ -623,7 +659,8 @@
             <div class="hero-content">
                 <h1>Hi, I'm Ivan</h1>
                 <p class="tagline">Digital Marketing Strategist & AI Solutions Expert</p>
-                <p class="subtitle">Transforming brands through innovative digital strategies, compelling content, and cutting-edge AI applications</p>
+                <p class="subtitle">Transforming brands through innovative digital strategies, compelling content, and
+                    cutting-edge AI applications</p>
                 <div>
                     <a class="btn" onclick="showSection('services')">🚀 Explore Services</a>
                     <a class="btn btn-secondary" onclick="showSection('contact')">💬 Let's Connect</a>
@@ -638,37 +675,44 @@
             <div class="service-card">
                 <div class="service-icon">📱</div>
                 <h3>Digital Marketing</h3>
-                <p>Strategic digital marketing solutions to grow your online presence, engage your audience, and drive measurable results through SEO, social media, and content marketing.</p>
+                <p>Strategic digital marketing solutions to grow your online presence, engage your audience, and drive
+                    measurable results through SEO, social media, and content marketing.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">✍️</div>
                 <h3>Professional Writing</h3>
-                <p>Crafting compelling content that resonates with your audience - from articles and copywriting to technical documentation and creative pieces.</p>
+                <p>Crafting compelling content that resonates with your audience - from articles and copywriting to
+                    technical documentation and creative pieces.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📝</div>
                 <h3>Blogging Services</h3>
-                <p>Engaging blog content creation and strategy that drives traffic, builds authority, and converts readers into loyal customers.</p>
+                <p>Engaging blog content creation and strategy that drives traffic, builds authority, and converts
+                    readers into loyal customers.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎯</div>
                 <h3>Leadership Training</h3>
-                <p>Individual and corporate leadership coaching programs designed to unlock potential, develop skills, and create transformative leaders.</p>
+                <p>Individual and corporate leadership coaching programs designed to unlock potential, develop skills,
+                    and create transformative leaders.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎨</div>
                 <h3>Brand Development</h3>
-                <p>Building powerful brand identities that stand out, connect emotionally, and create lasting impressions in competitive markets.</p>
+                <p>Building powerful brand identities that stand out, connect emotionally, and create lasting
+                    impressions in competitive markets.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🤖</div>
                 <h3>AI Application Development</h3>
-                <p>Custom AI solutions and intelligent applications that automate processes, enhance decision-making, and drive innovation.</p>
+                <p>Custom AI solutions and intelligent applications that automate processes, enhance decision-making,
+                    and drive innovation.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚡</div>
                 <h3>Vibe Coding</h3>
-                <p>Creative and efficient coding solutions with a focus on user experience, modern design, and innovative functionality.</p>
+                <p>Creative and efficient coding solutions with a focus on user experience, modern design, and
+                    innovative functionality.</p>
             </div>
         </div>
     </section>
@@ -678,10 +722,18 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Who I Am</h3>
-                <p>I'm Ivan, a passionate digital marketing strategist and AI solutions expert dedicated to helping individuals and businesses thrive in the digital age. With expertise spanning digital marketing, content creation, leadership development, and cutting-edge AI applications, I bring a unique blend of creativity and technical prowess to every project.</p>
-                <p>My approach combines strategic thinking with hands-on execution. Whether I'm developing a comprehensive digital marketing campaign, coaching leaders to reach their full potential, or building innovative AI applications, I focus on delivering measurable results that exceed expectations.</p>
-                <p>From startups to established enterprises, I've helped numerous clients transform their digital presence, develop strong brands, and leverage technology to achieve their goals. Let's work together to turn your vision into reality.</p>
-                
+                <p>I'm Ivan, a passionate digital marketing strategist and AI solutions expert dedicated to helping
+                    individuals and businesses thrive in the digital age. With expertise spanning digital marketing,
+                    content creation, leadership development, and cutting-edge AI applications, I bring a unique blend
+                    of creativity and technical prowess to every project.</p>
+                <p>My approach combines strategic thinking with hands-on execution. Whether I'm developing a
+                    comprehensive digital marketing campaign, coaching leaders to reach their full potential, or
+                    building innovative AI applications, I focus on delivering measurable results that exceed
+                    expectations.</p>
+                <p>From startups to established enterprises, I've helped numerous clients transform their digital
+                    presence, develop strong brands, and leverage technology to achieve their goals. Let's work together
+                    to turn your vision into reality.</p>
+
                 <div class="skills-section">
                     <h3>Core Expertise</h3>
                     <div class="skills-grid">
@@ -705,22 +757,24 @@
     <section id="contact" class="section-hidden">
         <h2>💬 Let's Connect</h2>
         <div class="contact-form">
-            <form id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/maqorrpz" method="POST">
                 <div class="form-group">
                     <label for="name">👤 Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your name">
                 </div>
                 <div class="form-group">
                     <label for="email">📧 Email</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com">
                 </div>
                 <div class="form-group">
                     <label for="subject">📝 Subject</label>
-                    <input type="text" id="subject" name="subject" required placeholder="What would you like to discuss?">
+                    <input type="text" id="subject" name="subject" required
+                        placeholder="What would you like to discuss?">
                 </div>
                 <div class="form-group">
                     <label for="message">💭 Message</label>
-                    <textarea id="message" name="message" required placeholder="Tell me about your project or inquiry..."></textarea>
+                    <textarea id="message" name="message" required
+                        placeholder="Tell me about your project or inquiry..."></textarea>
                 </div>
                 <button type="submit" class="btn" id="submitBtn" style="width: 100%;">✉️ Send Message</button>
                 <div id="formMessage" class="message"></div>
@@ -745,10 +799,7 @@
     </footer>
 
     <script>
-        const API_URL = window.location.hostname === 'localhost' 
-            ? 'http://localhost:3000/api' 
-            : '/api';
-
+        
         function createParticles() {
             const container = document.getElementById('particles');
             for (let i = 0; i < 50; i++) {
@@ -781,7 +832,7 @@
 
         function showSection(sectionName) {
             const sections = ['home', 'services', 'about', 'contact'];
-            
+
             sections.forEach(section => {
                 const el = document.getElementById(section);
                 if (section === sectionName) {
@@ -799,7 +850,7 @@
             messageEl.textContent = message;
             messageEl.className = `message ${type}`;
             messageEl.style.display = 'block';
-            
+
             setTimeout(() => {
                 messageEl.style.display = 'none';
             }, 5000);
@@ -807,41 +858,41 @@
 
         document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const submitBtn = document.getElementById('submitBtn');
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
 
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Sending...';
 
+            const form = e.target;
+            const formData = new FormData(form);
+
             try {
-                const response = await fetch(`${API_URL}/contact`, {
+                const response = await fetch(form.action, {
                     method: 'POST',
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
+                        'Accept': 'application/json'
+                    }
                 });
 
-                const data = await response.json();
-
-                if (data.success) {
-                    showMessage('✅ Thank you! I\'ll get back to you soon.', 'success');
-                    document.getElementById('contactForm').reset();
+                if (response.ok) {
+                    showMessage('✅ Success! Ivan has received your email.', 'success');
+                    form.reset();
                 } else {
-                    showMessage(`❌ ${data.message}`, 'error');
+                    throw new Error('Form submission failed');
                 }
             } catch (error) {
-                showMessage('❌ Failed to send message. Please try again later.', 'error');
-                console.error('Error:', error);
+                showMessage('❌ Oops! Something went wrong. Try again later.', 'error');
+                console.error(error);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '✉️ Send Message';
+                // fix your setTimeout – it had 'error' string which is invalid
+                setTimeout(() => {
+                    const messageEl = document.getElementById('formMessage');
+                    messageEl.style.display = 'none';
+                }, 5000);
             }
         });
 
@@ -850,4 +901,5 @@
         });
     </script>
 </body>
+
 </html>
