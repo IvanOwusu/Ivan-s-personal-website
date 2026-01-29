@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivan - Digital Marketing & AI Solutions</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <style>
         * {
             margin: 0;
@@ -70,18 +71,26 @@
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
             cursor: pointer;
             transition: transform 0.3s;
             z-index: 1001;
+            height: 50px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s;
         }
 
         .logo:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+        }
+
+        .logo:hover img {
+            filter: brightness(1.2);
         }
 
         .nav-links {
@@ -163,6 +172,26 @@
             bottom: 0;
             background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
             animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.05) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         @keyframes pulse {
@@ -326,18 +355,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .service-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            transition: transform 0.4s;
-            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
-        }
-
-        .service-card:hover .service-icon,
-        .service-card:active .service-icon {
-            transform: scale(1.2) rotateY(360deg);
-        }
 
         .service-card h3 {
             color: #a78bfa;
@@ -385,12 +402,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 8rem;
             position: relative;
             overflow: hidden;
             animation: fadeInRight 0.8s;
             box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2rem;
         }
 
         .about-image::before {
@@ -735,8 +757,14 @@
                 font-size: 1.4rem;
             }
 
-            .service-icon {
-                font-size: 3rem;
+            .service-icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            .service-icon-wrapper svg {
+                width: 40px;
+                height: 40px;
             }
 
             /* About Section */
@@ -832,8 +860,14 @@
                 padding: 1.5rem;
             }
 
-            .service-icon {
-                font-size: 2.5rem;
+            .service-icon-wrapper {
+                width: 50px;
+                height: 50px;
+            }
+
+            .service-icon-wrapper svg {
+                width: 35px;
+                height: 35px;
             }
 
             .skills-grid {
@@ -883,7 +917,82 @@
                 background: rgba(139, 92, 246, 0.2);
             }
         }
+        .service-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border-radius: 20px;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.4) 0%, rgba(236, 72, 153, 0.4) 100%);
+            transform: scale(1.1);
+        }
+
+        .service-icon-wrapper svg {
+            width: 50px;
+            height: 50px;
+        }
     </style>
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <symbol id="icon-marketing" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#iconGrad)" stroke-width="3"/>
+            <circle cx="30" cy="35" r="8" fill="url(#iconGrad)"/>
+            <circle cx="70" cy="35" r="8" fill="url(#iconGrad)"/>
+            <circle cx="50" cy="65" r="8" fill="url(#iconGrad)"/>
+            <path d="M 30 35 Q 50 50, 70 35" stroke="url(#iconGrad)" stroke-width="2" fill="none"/>
+            <path d="M 30 35 Q 50 50, 50 65" stroke="url(#iconGrad)" stroke-width="2" fill="none"/>
+            <path d="M 70 35 Q 50 50, 50 65" stroke="url(#iconGrad)" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="icon-writing" viewBox="0 0 100 100">
+            <path d="M 20 30 L 80 30 L 80 40 L 20 40 Z" fill="url(#iconGrad)"/>
+            <path d="M 20 50 L 65 50 L 65 60 L 20 60 Z" fill="url(#iconGrad)"/>
+            <path d="M 20 70 L 75 70 L 75 80 L 20 80 Z" fill="url(#iconGrad)"/>
+            <circle cx="30" cy="20" r="5" fill="url(#iconGrad)"/>
+            <line x1="30" y1="20" x2="30" y2="30" stroke="url(#iconGrad)" stroke-width="3"/>
+        </symbol>
+        <symbol id="icon-blog" viewBox="0 0 100 100">
+            <rect x="25" y="20" width="50" height="60" rx="5" fill="none" stroke="url(#iconGrad)" stroke-width="3"/>
+            <path d="M 30 35 L 70 35" stroke="url(#iconGrad)" stroke-width="2"/>
+            <path d="M 30 50 L 60 50" stroke="url(#iconGrad)" stroke-width="2"/>
+            <path d="M 30 65 L 55 65" stroke="url(#iconGrad)" stroke-width="2"/>
+            <circle cx="35" cy="25" r="3" fill="url(#iconGrad)"/>
+        </symbol>
+        <symbol id="icon-leadership" viewBox="0 0 100 100">
+            <path d="M 50 20 L 60 45 L 85 45 L 65 60 L 70 85 L 50 70 L 30 85 L 35 60 L 15 45 L 40 45 Z" fill="url(#iconGrad)"/>
+        </symbol>
+        <symbol id="icon-brand" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#iconGrad)" stroke-width="3"/>
+            <path d="M 35 50 Q 50 35, 65 50" stroke="url(#iconGrad)" stroke-width="3" fill="none"/>
+            <path d="M 35 50 Q 50 65, 65 50" stroke="url(#iconGrad)" stroke-width="3" fill="none"/>
+            <circle cx="50" cy="50" r="8" fill="url(#iconGrad)"/>
+        </symbol>
+        <symbol id="icon-ai" viewBox="0 0 100 100">
+            <rect x="25" y="25" width="50" height="50" rx="5" fill="none" stroke="url(#iconGrad)" stroke-width="3"/>
+            <circle cx="40" cy="40" r="5" fill="url(#iconGrad)"/>
+            <circle cx="60" cy="40" r="5" fill="url(#iconGrad)"/>
+            <path d="M 35 60 Q 50 70, 65 60" stroke="url(#iconGrad)" stroke-width="3" fill="none"/>
+            <path d="M 30 30 L 70 70" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+            <path d="M 70 30 L 30 70" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+        </symbol>
+        <symbol id="icon-coding" viewBox="0 0 100 100">
+            <path d="M 30 30 L 20 50 L 30 70" stroke="url(#iconGrad)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M 70 30 L 80 50 L 70 70" stroke="url(#iconGrad)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M 40 40 L 60 60" stroke="url(#iconGrad)" stroke-width="3"/>
+            <path d="M 60 40 L 40 60" stroke="url(#iconGrad)" stroke-width="3"/>
+        </symbol>
+    </svg>
 </head>
 <body>
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -891,7 +1000,9 @@
 
     <header id="header">
         <nav>
-            <div class="logo" onclick="showSection('home')">✨ Ivan</div>
+            <div class="logo" onclick="showSection('home')">
+                <img src="assets/logo.svg" alt="Ivan Logo" />
+            </div>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -924,37 +1035,51 @@
         <h2>💼 My Services</h2>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">📱</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-marketing"></use></svg>
+                </div>
                 <h3>Digital Marketing</h3>
                 <p>Strategic digital marketing solutions to grow your online presence, engage your audience, and drive measurable results through SEO, social media, and content marketing.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">✍️</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-writing"></use></svg>
+                </div>
                 <h3>Professional Writing</h3>
                 <p>Crafting compelling content that resonates with your audience - from articles and copywriting to technical documentation and creative pieces.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">📝</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-blog"></use></svg>
+                </div>
                 <h3>Blogging Services</h3>
                 <p>Engaging blog content creation and strategy that drives traffic, builds authority, and converts readers into loyal customers.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎯</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-leadership"></use></svg>
+                </div>
                 <h3>Leadership Training</h3>
                 <p>Individual and corporate leadership coaching programs designed to unlock potential, develop skills, and create transformative leaders.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🎨</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-brand"></use></svg>
+                </div>
                 <h3>Brand Development</h3>
                 <p>Building powerful brand identities that stand out, connect emotionally, and create lasting impressions in competitive markets.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🤖</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-ai"></use></svg>
+                </div>
                 <h3>AI Application Development</h3>
                 <p>Custom AI solutions and intelligent applications that automate processes, enhance decision-making, and drive innovation.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">⚡</div>
+                <div class="service-icon-wrapper">
+                    <svg><use href="#icon-coding"></use></svg>
+                </div>
                 <h3>Vibe Coding</h3>
                 <p>Creative and efficient coding solutions with a focus on user experience, modern design, and innovative functionality.</p>
             </div>
@@ -980,4 +1105,185 @@
                         <div class="skill-tag">Leadership Coaching</div>
                         <div class="skill-tag">Brand Strategy</div>
                         <div class="skill-tag">Copywriting</div>
-                        <div class="skill-tag">Web Development
+                        <div class="skill-tag">Web Development</div>
+                        <div class="skill-tag">Personal Branding</div>
+                        <div class="skill-tag">Growth Strategy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="assets/about-illustration.svg" alt="About Ivan" />
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-hidden">
+        <h2>📩 Contact Me</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="How can I help you?" required />
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell me a bit about your project or idea..." required></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitButton">Send Message</button>
+                <div id="formMessage" class="message"></div>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <a class="social-link" href="mailto:someone@example.com" target="_blank" rel="noopener">
+                ✉️ Email
+            </a>
+            <a class="social-link" href="https://www.linkedin.com" target="_blank" rel="noopener">
+                💼 LinkedIn
+            </a>
+            <a class="social-link" href="https://x.com" target="_blank" rel="noopener">
+                🐦 X (Twitter)
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Ivan. All rights reserved.</p>
+        <p>Digital marketing, leadership, and AI solutions for modern brands.</p>
+    </footer>
+
+    <script>
+        const sections = {
+            home: document.getElementById('home'),
+            services: document.getElementById('services'),
+            about: document.getElementById('about'),
+            contact: document.getElementById('contact')
+        };
+
+        const navLinks = document.getElementById('navLinks');
+        const menuToggle = document.getElementById('menuToggle');
+        const header = document.getElementById('header');
+        const cursorGlow = document.getElementById('cursorGlow');
+        const particlesContainer = document.getElementById('particles');
+        const yearSpan = document.getElementById('year');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitButton = document.getElementById('submitButton');
+
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        function setActiveSection(sectionId) {
+            Object.keys(sections).forEach((id) => {
+                if (!sections[id]) return;
+                if (id === sectionId) {
+                    sections[id].classList.remove('section-hidden');
+                } else {
+                    sections[id].classList.add('section-hidden');
+                }
+            });
+        }
+
+        function showSection(sectionId) {
+            setActiveSection(sectionId);
+
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        if (cursorGlow) {
+            window.addEventListener('mousemove', (e) => {
+                cursorGlow.style.transform = `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
+            });
+        }
+
+        if (particlesContainer) {
+            const particleCount = 35;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 8 + 4;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = 15 + Math.random() * 20 + 's';
+                particle.style.animationDelay = Math.random() * -20 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formMessage.style.display = 'none';
+                formMessage.className = 'message';
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                const formData = {
+                    name: contactForm.name.value.trim(),
+                    email: contactForm.email.value.trim(),
+                    subject: contactForm.subject.value.trim(),
+                    message: contactForm.message.value.trim()
+                };
+
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result && result.success) {
+                        formMessage.textContent = result.message || 'Message sent successfully!';
+                        formMessage.classList.add('success');
+                        formMessage.style.display = 'block';
+                        contactForm.reset();
+                    } else {
+                        throw new Error(result && result.message ? result.message : 'Failed to send message.');
+                    }
+                } catch (error) {
+                    formMessage.textContent = error.message || 'Something went wrong. Please try again.';
+                    formMessage.classList.add('error');
+                    formMessage.style.display = 'block';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                }
+            });
+        }
+
+        // Initialize default visible section
+        setActiveSection('home');
+    </script>
+</body>
+</html>
